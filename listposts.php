@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html lang="ua">
-<head>
-    <meta charset="UTF-8">
-    <title>ListPosts</title>
-    <link href="css/style.css" rel="stylesheet">
-</head>
-<body>
-    <div class="wrapper">
-        <header>
-            <div>&nbsp;</div>
-            <h1>HEADER</h1>
-            <div><a href="#">Login</a></div>
-        </header>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Posts</a>
-        </nav>
+
         <main>
             <div id="all_posts">
                 <div class="post">
@@ -50,9 +33,3 @@
                 </div>
             </div>
         </main>
-        <footer>
-            <h2>FOOTER</h2>
-        </footer>
-    </div>
-</body>
-</html>

@@ -1,21 +1,3 @@
-<!DOCTYPE html>
-<html lang="ua">
-<head>
-    <meta charset="UTF-8">
-    <title>Registration</title>
-    <link href="css/style.css" rel="stylesheet">
-</head>
-<body>
-    <div class="wrapper">
-        <header>
-            <div>&nbsp;</div>
-            <h1>HEADER</h1>
-            <div><a href="#">Login</a></div>
-        </header>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Posts</a>
-        </nav>
         <main>
             <form id="form_registration" method="post">
                 
@@ -23,8 +5,8 @@
                     <input type="text" minlength="30" name="f_name" placeholder="John" required>
                 </label>
                                
-                <label><span>Last Name:<em>*</em></span>
-                    <input type="text" minlength="30" name="l_name" placeholder="Doe" required>
+                <label><span>Surname:<em>*</em></span>
+                    <input type="text" minlength="30" name="surname" placeholder="Doe" required>
                 </label>
                                 
                 <label><span>Nick:<em>*</em></span>
@@ -47,9 +29,3 @@
 
             </form>
         </main>
-        <footer>
-            <h2>FOOTER</h2>
-        </footer>
-    </div>
-</body>
-</html>
