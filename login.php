@@ -1,6 +1,6 @@
 
 <main>
-    <form id="form_login" method="post">
+    <form id="form_lgin" method="post">
                 
         <label><span>Nick:</span>
             <input type="text" name="nick" placeholder="JDoe" required>
