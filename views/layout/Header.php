@@ -4,7 +4,7 @@
 class Header
 {
 
-    /** Возвращает содержимое тега header с указанным заглавием
+    /** Возвращает содержимое тега header с заданным текстом
      * @param string $header заглавие сайта
      * @return string html с содержимым тэга header
      */

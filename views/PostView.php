@@ -1,22 +1,23 @@
 <?php
 
 
+namespace views;
 
-class Posts
+
+ class PostView
 {
-
-    public static function getListPosts()
+    public static function getAllPost($posts)
     {
-        $posts = json_decode(file_get_contents(FILENAME), TRUE);
         $content = "<div id='all_posts'>";
 
         foreach ($posts as $key => $post)
         {
             //debug($post['title']);
             //debug($post['text']);
+
             $content .= "<div class='post'>
                             <div>
-                                <span>Title:</span> <div>{$post['title']}</div>
+                                <span>Alias:</span> <div>{$post['title']}</div>
                                 <span>Nick</span>
                                 <span>Date:</span> <span>Datetime</span>
                             </div>
@@ -25,41 +26,26 @@ class Posts
                             </div>
                         </div>";
         }
-
         $content .= "</div>";
         return $content;
-
     }
 
     public static function getFormNewPost()
     {
-return <<<NPST
-    <form id="form_post" method="post" action="addpost">
+        $path = PROJECT_PATH . '/';
+        return "<form id='form_post' method='post' action={$path}posts/addpost>
                 
         <label><span>Title:<em>*</em></span>
-            <input type="text" name="title" required>
+            <input type='text' name='title' required>
         </label>
                                
         <label><span>Text:</span>
-            <textarea name="text"></textarea>
+            <textarea name='text'></textarea>
         </label>
 
-        <input type="submit" value="Post">
+        <input type='submit' value='Post'>
 
-    </form>
-NPST;
+        </form>";
     }
 
-    public static function getNewPost()
-    {
-        $post = array();
-        if (isset($_POST['title']))
-        {
-            $title = htmlentities($_POST['title']);
-            $txt = htmlspecialchars($_POST['text']);
-
-            $post = ['title'=>$title, 'text' => $txt];
-        }
-        return $post;
-    }
 }

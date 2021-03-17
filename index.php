@@ -1,81 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Index</title>
-    <!--<link rel="stylesheet" href="css/reset.css">-->
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
 <?php
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
 
     require_once 'functions.php';
-    require_once 'Header.php';
-    require_once 'Navigation.php';
-    require_once 'Footer.php';
-    require_once 'Posts.php';
 
-    //$filename = 'posts.txt';
+    //require_once 'Posts.php';
+
+    /*require_once 'core/Router.php';
+    require_once 'controllers/PostsController.php';
+    require_once 'controllers/MainController.php';*/
+
+    // Путь папки проекта, задать '' если проект не лежит в отдельной папке
+    define('PROJECT_PATH','/nix_trainee');
+    //Корень
+    define('ROOT', dirname(__DIR__) . PROJECT_PATH);
+    // Файлс с массивом
     define('FILENAME', 'posts.txt');
+    // Вид по умолчанию
+    define('DEFAULT_VIEW', ROOT . '/views/layout/default.php');
 
-    /*if (!file_exists(FILENAME))
+    spl_autoload_register(function ($class)
     {
-        $file = fopen(FILENAME, 'w') or die("File Is Not Been Created");
-        fclose($file);
-    }*/
-
-    $content = '';
-
-    // Примитивный рутер. Пока такой
-    if ($_GET['r'] == 'newpost')
-    {
-        $content = Posts::getFormNewPost();
-    }
-
-    if ($_GET['r'] == 'posts')
-    {
-        $content = Posts::getListPosts();
-    }
-
-    if ($_GET['r'] == 'addpost')
-    {
-        $posts = json_decode(file_get_contents(FILENAME), TRUE);
-        $post = Posts::getNewPost();
-        $posts[] = $post;
-        if(file_put_contents(FILENAME, json_encode($posts)))
+        /*$file = ROOT . '/' . str_replace('\\', '/', $class) . '.php';
+        echo $file . '<br>';
+        if(file_exists($file))
         {
-            $content = "<p>Your Post Has Been Added</p>
-            <a href='posts'>Return</a>";
-        }
-        else
-        {
-            $content = "<p>Your Post Has Not Been Added</p>";
-        }
-        //debug($posts);
+            require_once $class;
+        }*/
+        require_once $class . '.php';
+    });
 
-    }
-?>
+    $router = new \core\Router();
+    $router -> dispatch();
 
-<header>
-    <?php
-    echo Header::getHeader();
-    ?>
-</header>
-
-    <?php
-    echo Navigation::getMenu();
-    ?>
-
-<main>
-    <?php
-    echo $content;
-    ?>
-</main>
-<footer>
-    <?php ;
-    echo Footer::getFooter();
-    ?>
-</footer>
-
-</body>
-</html>
