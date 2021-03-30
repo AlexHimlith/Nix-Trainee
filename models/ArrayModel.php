@@ -2,12 +2,14 @@
 
 namespace models;
 
-class ArrayModel
+use core\Model;
+
+class ArrayModel extends Model implements Storage
 {
     /** Возвращает весь массив постов из файла
      * @return mixed
      */
-    public static function getListArray()
+    public static function getList()
     {
         $file = ROOT . '/' . FILENAME;
         return json_decode(file_get_contents($file), TRUE);
@@ -18,16 +20,15 @@ class ArrayModel
      */
     public static function addPost()
     {
-        $post = [];
-        if (isset($_POST['title']))
-        {
-            $title = htmlspecialchars($_POST['title']);
-            $txt = htmlspecialchars($_POST['text']);
+        $post = self::getNewPost();
 
-            $post = ['title'=>$title, 'text' => $txt];
+        //временно. Заменить на ник пользователя!
+        if ($post['nick'] == 1)
+        {
+            $post['nick'] == 'Admin';
         }
 
-        $posts = ArrayModel::getListArray();
+        $posts = self::getList();
         $posts[] = $post;
 
         if(file_put_contents(ROOT . '/' . FILENAME, json_encode($posts)))

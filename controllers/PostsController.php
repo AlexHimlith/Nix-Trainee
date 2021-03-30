@@ -5,29 +5,31 @@ namespace controllers;
 
 
 use models\ArrayModel;
+use models\DbModel;
 use views\PostView;
+use views\View;
 
 class PostsController
 {
     public function actionIndex()
     {
-        $posts = ArrayModel::getListArray();
+        /*$posts = ArrayModel::getList();*/
+        $posts = DbModel::getList();
         $content = PostView::getAllPost($posts);
-
-        include DEFAULT_VIEW;
+        View::render($content);
     }
 
     public static function actionNew()
     {
         $content = PostView::getFormNewPost();
-
-        include DEFAULT_VIEW;
+        View::render($content);
     }
 
     public static function actionAddPost()
     {
         $path = PROJECT_PATH;
-        if(ArrayModel::addPost())
+        /*if(ArrayModel::addPost())*/
+        if (DbModel::addPost())
         {
             $content = "<p>Your Post Has Been Added</p>
                         <a href=$path/posts>Return</a>";
@@ -37,6 +39,6 @@ class PostsController
             $content = "<p>Your Post Has Not Been Added</p>";
         };
 
-        include DEFAULT_VIEW;
+        View::render($content);
     }
 }

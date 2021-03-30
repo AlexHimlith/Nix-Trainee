@@ -22,16 +22,18 @@ class Router
         $this->routes = include(ROOT . '/config/routes.php');
     }
 
-    /** Возвращает путь запроса без папки проекта (если таковая имеется) и index.php (разобраться, почему запихивает, если набрать в строке запроса)
+    /** Возвращает путь запроса
      * @return string
      */
     private function getURI()
     {
         if (!empty($_SERVER['REQUEST_URI']))
         {
+            //echo $_SERVER['REQUEST_URI'];
             $route = str_replace('index.php/','', $_SERVER['REQUEST_URI']);
             $route = str_replace('index.php','', $route);
-            $route = str_replace(PROJECT_PATH . '/','', $route);
+            $route = ltrim($route,'/');
+            //$route = str_replace(/*PROJECT_PATH . */'/','', $route);
 
             return $route;
         }
@@ -104,44 +106,6 @@ class Router
                 http_response_code(404);
                 include '404.html';
             }
-
-
-
-        /*foreach ($this->routes as $uriPattern => $path)
-        {
-            //echo 'uriPattern: ' . debug($uriPattern);
-            //echo 'path: ' . debug($path);
-
-            if (preg_match("~^($uriPattern)$~i", $uri))//, $matches))
-            {
-                $segments = explode('/', $path);
-
-                $controllerName = ucfirst(array_shift($segments) . 'Controller');
-
-                $actionName = 'action' . ucfirst(array_shift($segments));
-
-                $controllerFile = 'controllers/' . $controllerName . '.php';
-
-                if (file_exists($controllerFile))
-                {
-                    require_once $controllerFile;
-                }
-
-                $controllerObj = new $controllerName();
-                $result = $controllerObj->$actionName();
-                if ($result != null)
-                {
-                    break;
-                }
-            }
-        }*/
-
-        /*$d = 'Query_string: ' . $_SERVER['QUERY_STRING'] . '<br>';
-        $d .= 'Request_uri: ' . $_SERVER['REQUEST_URI'] . '<br>';
-        $d .= 'After: ' . $q . '<br>';
-        $d .= 'GET: ' . $_GET['r'] . '<br>';
-        return $d;*/
-
 
     }
 }

@@ -11,9 +11,9 @@
     require_once 'controllers/MainController.php';*/
 
     // Путь папки проекта, задать '' если проект не лежит в отдельной папке
-    define('PROJECT_PATH','/nix_trainee');
+    define('PROJECT_PATH','');
     //Корень
-    define('ROOT', dirname(__DIR__) . PROJECT_PATH);
+    define('ROOT', __DIR__ . PROJECT_PATH);
     // Файлс с массивом
     define('FILENAME', 'posts.txt');
     // Вид по умолчанию
@@ -21,13 +21,14 @@
 
     spl_autoload_register(function ($class)
     {
-        /*$file = ROOT . '/' . str_replace('\\', '/', $class) . '.php';
-        echo $file . '<br>';
+        $file = ROOT . '/' . str_replace('\\', '/', $class) . '.php';
+        /*echo $class . '<br>';
+        echo $file . '<br>';*/
         if(file_exists($file))
         {
-            require_once $class;
-        }*/
-        require_once $class . '.php';
+            require_once $file;
+        }
+        /*require_once $class . '.php';*/
     });
 
     $router = new \core\Router();

@@ -4,11 +4,15 @@
 namespace controllers;
 
 
+use models\DbModel;
+//use views\PostView;
+use views\View;
+
 class MainController
 {
     public function actionIndex()
     {
-        $content = 'MainController->actionIndex';
-        include DEFAULT_VIEW;
+        $content = /*DbModel::getList();*/'MainController->actionIndex';
+        View::render($content);
     }
 }
