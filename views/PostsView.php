@@ -3,14 +3,10 @@
 
 namespace views;
 
+use core\View;
 
- class PostView
+class PostsView extends View
 {
-    /*public static function render($content)
-    {
-        include DEFAULT_VIEW;
-    }*/
-
     public static function getAllPost($posts)
     {
         //debug($posts);
@@ -38,8 +34,7 @@ namespace views;
 
     public static function getFormNewPost()
     {
-        $path = PROJECT_PATH . '/';
-        return "<form id='form_post' method='post' action={$path}posts/addpost>
+        return "<form id='form_post' method='post' action='/posts/addpost'>
                 
         <label><span>Title:<em>*</em></span>
             <input type='text' name='title' required>
@@ -53,5 +48,10 @@ namespace views;
 
         </form>";
     }
+
+    /*public static function render($content)
+    {
+        include DEFAULT_VIEW;
+    }*/
 
 }

@@ -22,11 +22,11 @@ class ArrayModel extends Model implements Storage
     {
         $post = self::getNewPost();
 
-        //временно. Заменить на ник пользователя!
-        if ($post['nick'] == 1)
-        {
-            $post['nick'] == 'Admin';
-        }
+
+        //if ($post['nick'] == 1)
+        //{
+            $post['nick'] = '';
+        //}
 
         $posts = self::getList();
         $posts[] = $post;

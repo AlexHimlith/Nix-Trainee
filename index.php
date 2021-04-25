@@ -2,13 +2,10 @@
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
 
+    //session_start();
+
+    //технический файл
     require_once 'functions.php';
-
-    //require_once 'Posts.php';
-
-    /*require_once 'core/Router.php';
-    require_once 'controllers/PostsController.php';
-    require_once 'controllers/MainController.php';*/
 
     // Путь папки проекта, задать '' если проект не лежит в отдельной папке
     define('PROJECT_PATH','');
@@ -19,6 +16,7 @@
     // Вид по умолчанию
     define('DEFAULT_VIEW', ROOT . '/views/layout/default.php');
 
+    //автозагрузка классов
     spl_autoload_register(function ($class)
     {
         $file = ROOT . '/' . str_replace('\\', '/', $class) . '.php';
@@ -28,9 +26,9 @@
         {
             require_once $file;
         }
-        /*require_once $class . '.php';*/
     });
 
+    //запуск роутера
     $router = new \core\Router();
     $router -> dispatch();
 

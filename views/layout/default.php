@@ -1,43 +1,24 @@
-<?php
-
-    use views\layout\Header;
-    use views\layout\Navigation;
-    use views\layout\Footer;
-
-    $path = PROJECT_PATH . '/views/css/style.css';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <?php $this->getTitle() ?>
     <!--<link rel="stylesheet" href="../css/reset.css">-->
-    <link rel="stylesheet" href="<?php echo $path ?>">
+    <link rel="stylesheet" href="/views/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/views/js/forms.js"></script>
 </head>
 <body>
 
-<header>
-    <?php
-        echo \views\layout\Header::getHeader();
-    ?>
-</header>
+    <?php echo $this -> getHeader(); ?>
 
-    <?php
-        echo \views\layout\Navigation::getMenu();
-    ?>
+    <?php echo $this -> getMenu(); ?>
 
 <main>
-    <?php
-        echo $content;
-    ?>
+    <?php echo $content; ?>
 </main>
 
-<footer>
-    <?php
-        echo \views\layout\Footer::getFooter();
-    ?>
-</footer>
+    <?php echo $this -> getFooter(); ?>
 
 </body>
 </html>

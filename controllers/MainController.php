@@ -3,16 +3,13 @@
 
 namespace controllers;
 
+use core\Controller;
 
-use models\DbModel;
-//use views\PostView;
-use views\View;
-
-class MainController
+class MainController extends Controller
 {
     public function actionIndex()
     {
-        $content = /*DbModel::getList();*/'MainController->actionIndex';
-        View::render($content);
+        $content = 'MainController->actionIndex';
+        $this -> viewObj -> render($content);
     }
 }

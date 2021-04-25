@@ -4,41 +4,40 @@
 namespace controllers;
 
 
-use models\ArrayModel;
+//use models\ArrayModel;
+use core\Controller;
 use models\DbModel;
-use views\PostView;
-use views\View;
+use views\PostsView;
 
-class PostsController
+class PostsController extends Controller
 {
     public function actionIndex()
     {
         /*$posts = ArrayModel::getList();*/
         $posts = DbModel::getList();
-        $content = PostView::getAllPost($posts);
-        View::render($content);
+        $content = $this -> viewObj -> getAllPost($posts);
+        $this->viewObj -> render($content);
     }
 
-    public static function actionNew()
+    public function actionNew()
     {
-        $content = PostView::getFormNewPost();
-        View::render($content);
+        $content = PostsView::getFormNewPost();
+        $this -> viewObj -> render($content);
     }
 
-    public static function actionAddPost()
+    public function actionAddPost()
     {
-        $path = PROJECT_PATH;
         /*if(ArrayModel::addPost())*/
         if (DbModel::addPost())
         {
             $content = "<p>Your Post Has Been Added</p>
-                        <a href=$path/posts>Return</a>";
+                        <a href='/posts'>Return</a>";
         }
         else
         {
             $content = "<p>Your Post Has Not Been Added</p>";
         };
 
-        View::render($content);
+        $this -> viewObj -> render($content);
     }
 }

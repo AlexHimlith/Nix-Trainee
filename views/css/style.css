@@ -27,31 +27,49 @@ header {
 
   header a {
     font-size: medium;
+    text-decoration: none;
+  }
+
+  header a, a:visited, a:hover {
+    color: #06276f;
   }
 
 nav {
+  display: flex;
   background-color: #4380d3;
   padding: 10px;
 }
 
   nav a {
     margin-right: 1%;
+    text-decoration: none;
   }
 
-    nav a:hover {
-      background-color: #f0e68c;
+    nav a, a:visited {
+      color: #06276f;
     }
+
+    nav a:hover {
+      /*background-color: #f0e68c;*/
+      color: #34d2af;
+    }
+
+#profile {
+  margin-left: auto;
+}
 
 main {
   flex: 1 0 auto;
+  text-align: center;
 }
 
   form {
     display: flex;
     flex-direction: column;
     margin: 1em auto;
-    background-color: #00ffff;
-    border: 2px solid #0000ff;
+    background-color: #34d2af;
+    border: 2px solid #4380d3;
+    border-radius: 5px;
     padding: 1em;
   }
 
@@ -86,10 +104,19 @@ main {
         flex: 4;
       }
 
-  #all_posts {
-    width: 80%;
-    margin: 1em auto;
-  }
+    #form_post {
+      width: 80%;
+      margin: 1em auto;
+    }
+
+      #form_post input, textarea {
+        flex: 8;
+      }
+
+    #all_posts {
+      width: 80%;
+      margin: 1em auto;
+    }
 
   .post {
     display: flex;
