@@ -54,7 +54,7 @@ nav {
       color: #34d2af;
     }
 
-#profile {
+#login {
   margin-left: auto;
 }
 
@@ -74,7 +74,7 @@ main {
   }
 
     form label {
-      width: 100%;
+      /*width: 100%;*/
       display: flex;
       justify-content: space-between;
       margin-bottom: 5px;
@@ -113,6 +113,51 @@ main {
         flex: 8;
       }
 
+    #form_profile {
+      display: block;
+      width: 60%;
+      margin: 1em auto;
+    }
+
+      #form_profile img {
+        float: left;
+        width: 20%;
+      }
+
+      #form_profile div {
+        margin-left: 22%;
+      }
+
+      #form_profile label {
+        display: flex;
+        margin-bottom: 1em;
+        /*flex-direction: column;*/
+      }
+
+      #form_profile span {
+        /*flex: 1;*/
+        text-align: right;
+        padding-right: 0.5em;
+      }
+
+      #form_profile input {
+        flex: 4;
+      }
+
+     #form_load {
+       width: 30%;
+       /*text-align: center;*/
+     }
+
+       #form_load input {
+         align-self: center;
+       }
+
+       #load_btn {
+         width: 20%;
+         align-self: center;
+       }
+
     #all_posts {
       width: 80%;
       margin: 1em auto;
@@ -143,34 +188,6 @@ main {
     .post > div:first-child {
       margin-bottom: 3px;
     }
-
-#profile {
-  width: 80%;
-  margin: 1em auto;
-}
-
-  #profile h3 {
-    text-align: center;
-  }
-
-  #profile img {
-    float: left;
-    width: 20%;
-  }
-
-  #profile div {
-    margin-left: 22%;
-    padding-bottom: 3%;
-  }
-
-  #profile div:first-of-type {
-    font-size: large;
-    font-weight: bold;
-  }
-
-  #profile div span:first-child {
-    font-weight: bold;
-  }
 
 footer {
   flex: 0 0 auto;

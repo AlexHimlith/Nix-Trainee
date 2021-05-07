@@ -41,4 +41,15 @@ class Model
         return [];
     }
 
+    protected static function updateOne($table, $id, $field, $value)
+    {
+        $db = self::connect();
+        $smtp = $db->pdo->prepare("UPDATE $table SET $field = :val WHERE `id` = $id");
+        $smtp->bindValue('val', $value);
+        if (!$smtp->execute())
+        {
+            return false;
+        }
+        return true;
+    }
 }
