@@ -6,20 +6,20 @@ namespace controllers;
 
 use core\Controller;
 use models\UserModel;
-use views\UserView;
+//use views\UserView;
 
 
-class UserController extends Controller
+class UserController extends Controller implements UserContInterface
 {
-    public function actionLogin(/*$end_session = false*/)
+    public function actionLogin()
     {
-        $content = UserView::getFormLogin();
+        $content = $this->viewObj->getFormLogin();//UserView::getFormLogin();
         $this -> viewObj -> render($content);
     }
 
     public function actionRegistration()
     {
-        $content = UserView::getFormRegistration();
+        $content = $this->viewObj->getFormRegistration();//UserView::getFormRegistration();
         $this -> viewObj -> render($content);
     }
 
@@ -37,14 +37,23 @@ class UserController extends Controller
 
     public function actionProfile()
     {
+        // проверить сессию на наличие авторизированного пользователя
+        self::verifySession();
+        //debug($_POST);
+        // если массив POST не пуст
         if (!empty($_POST))
         {
+            // вызвать обновление профиля
             $updated = UserModel::updateProfile();
         }
+        // получить профиль пользователя и создать форму с его данными
         $user = UserModel::profileUser();
-        $content = UserView::getFormProfile($user) ;
+        $content = $this->viewObj->getFormProfile($user);//UserView::getFormProfile($user);
+
+        // если было обновление профиля
         if (!empty($updated))
         {
+            //добавить результаты
             $content .= "<br><p>$updated</p>";
         }
         $this -> viewObj -> render($content);
@@ -52,23 +61,28 @@ class UserController extends Controller
 
     public function actionImage()
     {
+        // проверить сессию на наличие авторизированного пользователя
+        self::verifySession();
         //debug($_FILES);
 
         $load = '';
+        // если был загружен файл
         if (!empty($_FILES))
         {
+            // если картинка пользователя была обновлена
             if(UserModel::uploadImage())
             {
-                /*$load = "<br><p>File loaded</p>";*/
+                // перейти на страницу профиля
                 header("Location: /user/profile");
             }
             else
-                {
-                    $load = "<br><p>File not loaded</p>";
-                }
+            {
+                // сформировать сообщени о неудаче
+                $load = "<br><p>File not loaded</p>";
+            }
 
         }
-        $content = UserView::getFormLoad() . $load;
+        $content = $this->viewObj->getFormLoad() . $load;//UserView::getFormLoad() . $load;
         $this -> viewObj -> render($content);
     }
 

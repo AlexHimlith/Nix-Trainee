@@ -4,10 +4,10 @@
 namespace views;
 
 
-class MainView extends \core\View
+class MainView extends \core\View implements MainViewInterface
 {
-    /*public function render($content, $layout = DEFAULT_VIEW)
+    public function getMain()
     {
-        include $layout;
-    }*/
+        return "<img id='start' src= '/views/img/forum1.png'>";
+    }
 }

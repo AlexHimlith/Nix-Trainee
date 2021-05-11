@@ -4,7 +4,7 @@ namespace models;
 
 use core\Model;
 
-class ArrayModel extends Model implements Storage
+class ArrayModel extends Model implements PostInterface
 {
     /** Возвращает весь массив постов из файла
      * @return mixed

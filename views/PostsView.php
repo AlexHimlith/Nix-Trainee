@@ -5,7 +5,7 @@ namespace views;
 
 use core\View;
 
-class PostsView extends View
+class PostsView extends View implements PostsViewInterface
 {
     public static function getAllPost($posts)
     {
@@ -48,10 +48,5 @@ class PostsView extends View
 
         </form>";
     }
-
-    /*public static function render($content)
-    {
-        include DEFAULT_VIEW;
-    }*/
 
 }

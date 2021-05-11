@@ -1,4 +1,5 @@
 <?php
+    // данные для подключения к базе
     $dsn = 'mysql:host=localhost; dbname=nixtrainee; charset=utf8';
     $user = 'root';
     $pass = '';

@@ -79,6 +79,7 @@ $(document).ready(function () {
         else {
             let regExName = /^[A-Za-z']+$/;
             if (!regExName.test(name)) {
+                $(".error").remove();
                 $('#name').after('<span class="error">Name and surname can consist of English characters</span>');
                 return false;
             }
@@ -143,9 +144,10 @@ $(document).ready(function () {
     }
 
     function dateValid(datebirth) {
-        let rexExDate = /^[0-3]{1}[0-9]{1}.[0-1]{1}[0-9]{1}.[0-9]{2,4}$/;
+        //let rexExDate = /^[0-3]{1}[0-9]{1}.[0-1]{1}[0-9]{1}.[0-9]{2,4}$/;
+        let rexExDate = /^[0-9]{2,4}-[0-1]{1}[0-9]{1}-[0-3]{1}[0-9]{1}$/;
         if (!rexExDate.test(datebirth)) {
-            $('#dateborth').after('<span class="error">Enter the correct date</span>');
+            $('#datebirth').after('<span class="error">Enter the correct date</span>');
             return false;
         }
         return true;

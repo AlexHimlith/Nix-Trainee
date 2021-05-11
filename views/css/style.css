@@ -50,18 +50,22 @@ nav {
     }
 
     nav a:hover {
-      /*background-color: #f0e68c;*/
       color: #34d2af;
     }
 
-#login {
-  margin-left: auto;
-}
+  #prof {
+    margin-left: auto;
+  }
 
 main {
   flex: 1 0 auto;
   text-align: center;
+  background-color: #96DCC7;
 }
+
+  main #start {
+    height: 70vh;
+  }
 
   form {
     display: flex;
@@ -146,7 +150,6 @@ main {
 
      #form_load {
        width: 30%;
-       /*text-align: center;*/
      }
 
        #form_load input {
@@ -158,16 +161,17 @@ main {
          align-self: center;
        }
 
-    #all_posts {
-      width: 80%;
-      margin: 1em auto;
-    }
+  #all_posts {
+    width: 80%;
+    margin: 1em auto;
+  }
 
   .post {
     display: flex;
     flex-direction: column;
     padding: 0.5em;
     margin-bottom: 1em;
+    background-color: #ffffff;
     border: 2px solid #0000ff;
     box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.5);
   }
@@ -179,6 +183,7 @@ main {
     .post div div {
       flex: auto;
       font-weight: bold;
+      text-align: left;
     }
 
     .post span {

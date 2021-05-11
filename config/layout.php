@@ -1,3 +1,4 @@
 <?php
+    // данные для автозаполнения шаблона
     $title = 'Nix Trainee';
-    $header = 'Header';
+    $header = 'Simple Forum';

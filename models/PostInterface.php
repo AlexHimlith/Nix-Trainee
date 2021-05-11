@@ -2,7 +2,7 @@
 
 namespace models;
 
-interface Storage
+interface PostInterface
 {
     public static function getList();
     public static function addPost();

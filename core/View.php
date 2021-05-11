@@ -11,28 +11,38 @@ class View
 
     function __construct()
     {
+        // подключить конфигурацию шаблона
         require 'config/layout.php';
         $this->title = $title;
         $this->header = $header;
     }
 
+    /** Выводит титул страницы
+     *
+     */
     public function getTitle()
     {
         echo "<title>$this->title</title>";
     }
 
+    /** Формируте "шапку" страницы
+     * @return string
+     */
     public function getHeader()
     {
+        // если в текущей сессии есть переменная nickБ т.е. произошла авторизация
         if (!empty($_SESSION['nick']))
         {
+            // задать данные для вывода ника пользователя и ссылки на выход
             $auth = $_SESSION['nick'];
             $route = '/user/exit';
         }
         else
-            {
-                $auth = 'Login';
-                $route = '/user/login';
-            }
+        {
+            // иначе задать ссылку на авторизацию
+            $auth = 'Login';
+            $route = '/user/login';
+        }
         return
             "<header>
                 <div>&nbsp;</div>
@@ -41,11 +51,15 @@ class View
             </header>";
     }
 
+    /** Формирует меню страницы
+     * @return string
+     */
     public function getMenu()
     {
-        //$path = PROJECT_PATH;
+        // если задан nick в сессии (пользователь авторизован)
         if (!empty($_SESSION['nick']))
         {
+            // задать ссылку на страницу профиля
             $profile = 'Profile';
             $route = '/user/profile';
             $newpost = "<a href='/posts/new'>New Post</a>";
@@ -60,10 +74,13 @@ class View
                 <a href='/'>Home</a>
                 <a href='/posts'>Posts</a>
                 $newpost
-                <a id='login' href='$route'>$profile</a>
+                <a id='prof' href='$route'>$profile</a>
                 </nav>";
     }
 
+    /** Формирует подвал страницы
+     * @return string
+     */
     public function getFooter()
     {
         return "<footer>
@@ -71,6 +88,10 @@ class View
                 </footer>";
     }
 
+    /** Подключает шаблон с заданным сонтентом
+     * @param $content
+     * @param string $layout
+     */
     public function render($content, $layout = DEFAULT_VIEW)
     {
         include $layout;

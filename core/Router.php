@@ -103,11 +103,9 @@ class Router
 
             //echo $controller . '->' . $action;
 
-            //$controller = 'controllers\\' . $controller;
-
             // если такой контроллер существует...
             if(class_exists($controller)){
-                // ...создать его объект
+                // ...создать его объект (передав имя контроллера его конструкторы для формирования объекта Вида)
                 $controllerObj = new $controller($this->route['controller']);
                 // если действие существует....
                 if (method_exists($controllerObj, $action))
@@ -128,7 +126,7 @@ class Router
         else
             {
                 http_response_code(404);
-                include '404.html';
+                include ROOT . '/views/layout/404.html';
             }
 
     }
